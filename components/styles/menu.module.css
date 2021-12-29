@@ -1,0 +1,11 @@
+.mainMenu {
+  height: 61px !important;
+  border: 1 !important;
+  box-shadow: none !important;
+  background-color: #1e3d58 !important;
+}
+
+.sidebarButton {
+  width: 60px !important;
+  padding: 0 !important;
+}

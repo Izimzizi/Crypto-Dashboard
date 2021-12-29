@@ -1,0 +1,84 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&family=Archivo+Black&display=swap");
+
+body {
+  background-color: #1e3d58 !important;
+  font-family: "Nunito Sans", sans-serif !important;
+  font-size: 16px !important;
+  line-height: 25px !important;
+}
+
+.headerFont {
+  font-family: "Archivo Black", sans-serif !important;
+  margin: 0 !important;
+  font-size: 24px !important;
+  line-height: 32px !important;
+  color: #fefefe !important;
+}
+
+.subFont {
+  font-family: "Archivo Black", sans-serif !important;
+  font-size: 16px !important;
+  line-height: 25px !important;
+  color: #fefefe !important;
+}
+.dollarFont {
+  font-family: "Nunito Sans", sans-serif !important;
+  color: #057dcd !important;
+  font-size: 16px !important;
+  line-height: 25px !important;
+}
+
+.labelFont {
+  font-family: "Nunito Sans", sans-serif !important;
+  font-size: 16px !important;
+  line-height: 25px !important;
+  padding: 8px 15px !important;
+  text-align: center !important;
+  color: #222 !important;
+}
+
+.indexContainer {
+  width: 75% !important;
+  margin-top: 20px !important;
+}
+
+.centerSegment {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  padding: 10px !important;
+  border: 0 !important;
+  border-radius: 10px !important;
+  background-color: #1e3d58 !important;
+}
+
+.mainSegment {
+  background-color: transparent !important;
+  border-color: transparent !important;
+  padding: 20px !important;
+}
+
+.addressInput {
+  max-width: 420px !important;
+  margin: auto !important;
+}
+
+.totalLogo {
+  margin: auto !important;
+  width: 120px !important;
+  padding: 30px 0 20px !important;
+}
+
+.smallRewardTokenLogo {
+  width: 40px !important;
+}
+
+.smallInfoBoxValue {
+  min-width: 140px !important;
+}
+
+.tokenLogo {
+  margin: auto !important;
+  padding: 20px 0 10px !important;
+  width: 120px !important;
+}

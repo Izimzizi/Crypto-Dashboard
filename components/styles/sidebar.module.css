@@ -1,0 +1,23 @@
+.pushable {
+  position: fixed !important;
+  top: 61px !important;
+  left: 0 !important;
+  min-width: 100% !important;
+  background-color: #2e688c !important;
+}
+
+.sidebar {
+  position: -webkit-sticky !important;
+  position: sticky !important;
+  max-height: 99% !important;
+  border: 0 !important;
+  top: 0 !important;
+  background-color: #1e3d58 !important;
+}
+
+.pusher {
+  position: absolute !important;
+  top: 0 !important;
+  transition: all 0.1s linear !important;
+  padding-bottom: 80px !important;
+}
