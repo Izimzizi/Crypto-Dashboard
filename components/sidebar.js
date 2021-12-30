@@ -3,6 +3,8 @@ import { isMobile } from "react-device-detect";
 import { Icon, Menu, Sidebar, Divider, Ref, Image } from "semantic-ui-react";
 import styles from "./styles/sidebar.module.css";
 
+const { website, twitter, telegram } = require("./config/conf.json");
+
 class SwitchMenu extends Component {
   render() {
     return this.props.isCompact ? (
@@ -11,7 +13,7 @@ class SwitchMenu extends Component {
           <Icon name="home" inverted color="grey" />
         </Menu.Item>
 
-        <Menu.Item link href="https://flokeloninu.com/">
+        <Menu.Item link href={website}>
           <Icon name="world" inverted color="grey" />
         </Menu.Item>
         <Divider />
@@ -29,14 +31,10 @@ class SwitchMenu extends Component {
           width="very thin"
           style={{ boxShadow: "none" }}
         >
-          <Menu.Item
-            link
-            target="_blank"
-            href="https://twitter.com/FlokelonInu"
-          >
+          <Menu.Item link target="_blank" href={twitter}>
             <Icon name="twitter" inverted color="grey" />
           </Menu.Item>
-          <Menu.Item link target="_blank" href="https://t.me/FlokCommunity">
+          <Menu.Item link target="_blank" href={telegram}>
             <Icon name="telegram" inverted color="grey" />
           </Menu.Item>
         </Sidebar>
@@ -46,11 +44,7 @@ class SwitchMenu extends Component {
         <Menu.Item link href="/" style={{ color: "#fefefe" }}>
           Dashboard
         </Menu.Item>
-        <Menu.Item
-          link
-          href="https://flokeloninu.com/"
-          style={{ color: "#fefefe" }}
-        >
+        <Menu.Item link href={website} style={{ color: "#fefefe" }}>
           Website
         </Menu.Item>
         <Divider />
@@ -74,7 +68,7 @@ class SwitchMenu extends Component {
           <Menu.Item
             link
             target="_blank"
-            href="https://twitter.com/FlokelonInu"
+            href={twitter}
             style={{ color: "#fefefe" }}
           >
             Twitter
@@ -82,7 +76,7 @@ class SwitchMenu extends Component {
           <Menu.Item
             link
             target="_blank"
-            href="https://t.me/FlokCommunity"
+            href={telegram}
             style={{ color: "#fefefe" }}
           >
             Telegram

@@ -5,6 +5,8 @@ import "semantic-ui-css/semantic.min.css";
 import { isMobile } from "react-device-detect";
 import Head from "next/head";
 
+const { title } = require("./config/conf.json");
+
 class Layout extends Component {
   state = {
     width: "very thin",
@@ -64,7 +66,7 @@ class Layout extends Component {
       <div>
         <Head>
           <link rel="shortcut icon" href="/favicon.ico" />
-          <title>Flokelon Inu Dashboard</title>
+          <title>{title}</title>
         </Head>
         <MenuComponent
           toggleSidebar={this.toggleSidebar}

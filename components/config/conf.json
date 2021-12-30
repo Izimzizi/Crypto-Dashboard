@@ -1,0 +1,12 @@
+{
+  "title": "Flokelon Inu Dashboard",
+  "contractAddress": "0x2db71c6c092F990676DaD40A5Ea0cEf597AD48eb",
+  "website": "https://flokeloninu.com/",
+  "twitter": "https://twitter.com/FlokelonInu",
+  "telegram": "https://t.me/FlokCommunity",
+  "decimal": "gwei",
+  "rewardAPI": "https://api.pancakeswap.info/api/v2/tokens/0x2b3f34e9d4b127797ce6244ea341a83733ddd6e4",
+  "tokenAPI": "https://api.pancakeswap.info/api/v2/tokens/0xacf68b09876e6a053e610bdf90ac0bf59ab751be",
+  "tokenSymbol": "FLOK",
+  "rewardSymbol": "FLOKI"
+}

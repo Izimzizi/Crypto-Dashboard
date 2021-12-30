@@ -20,6 +20,15 @@ import { isMobile } from "react-device-detect";
 import Countdown from "react-countdown";
 import router from "next/router";
 
+const {
+  decimal,
+  rewardAPI,
+  tokenAPI,
+  contractAddress,
+  tokenSymbol,
+  rewardSymbol,
+} = require("../components/config/conf.json");
+
 const convertNumber = (number, pref) => {
   return (
     <NumberFormat
@@ -56,18 +65,13 @@ class Index extends Component {
   static async getInitialProps() {
     const totalBUSD = web3.utils.fromWei(
       await contract.methods.totalBountys().call(),
-      "gwei"
+      decimal
     );
     return { totalBUSD };
   }
 
   componentDidMount = async () => {
     //#region Fetch current prices
-    const tokenAPI =
-      "https://api.pancakeswap.info/api/v2/tokens/0xacf68b09876e6a053e610bdf90ac0bf59ab751be";
-
-    const rewardAPI =
-      "https://api.pancakeswap.info/api/v2/tokens/0x2b3f34e9d4b127797ce6244ea341a83733ddd6e4";
     try {
       const tokenPrice = await fetch(tokenAPI)
         .then((response) => response.json())
@@ -175,10 +179,10 @@ class Index extends Component {
         .call();
       const shares = await contract.methods.shares(hodlerAddress).call();
       this.setState({
-        claimableDividends: web3.utils.fromWei(await unpaid, "gwei"),
-        totalDividends: web3.utils.fromWei(await shares[2], "gwei"),
+        claimableDividends: web3.utils.fromWei(await unpaid, decimal),
+        totalDividends: web3.utils.fromWei(await shares[2], decimal),
         //  seconds: (await info[7]) * 1000,
-        balancOfAddress: web3.utils.fromWei(await shares[0], "gwei"),
+        balancOfAddress: web3.utils.fromWei(await shares[0], decimal),
       });
     } catch (error) {
       router.reload();
@@ -206,7 +210,7 @@ class Index extends Component {
       try {
         this.setState({ loadingClaim: true });
         const transactionParameters = {
-          to: "0x2db71c6c092F990676DaD40A5Ea0cEf597AD48eb", // Required except during contract publications.
+          to: contractAddress, // Required except during contract publications.
           from: window.ethereum.selectedAddress, // must match user's active address.
           data: "0xee4be288", // Optional, but used for defining smart contract creation and interaction.
           chainId: "0x38", // Used to prevent transaction reuse across blockchains. Auto-filled by MetaMask.
@@ -226,7 +230,7 @@ class Index extends Component {
       try {
         this.setState({ loadingClaim: true });
         const transactionParameters = {
-          to: "0x2db71c6c092F990676DaD40A5Ea0cEf597AD48eb", // Required except during contract publications.
+          to: contractAddress, // Required except during contract publications.
           from: provider.accounts[0], // must match user's active address.
           data: "0xee4be288", // Optional, but used for defining smart contract creation and interaction.
           chainId: "0x38", // Used to prevent transaction reuse across blockchains. Auto-filled by MetaMask.
@@ -274,7 +278,7 @@ class Index extends Component {
             }
             warning
             header="Balance is too Low!"
-            content="You need to hold atleast 1 FLOK tokens to be eligible for rewards!"
+            content={`You need to hold atleast 1 ${tokenSymbol} tokens to be eligible for rewards!`}
           />
           <Message
             hidden={!this.state.mmnotFound}
@@ -294,10 +298,10 @@ class Index extends Component {
                     <div>
                       <Label attached="top" className="labelFont">
                         <Label.Detail style={{ fontSize: this.state.fontSize }}>
-                          Your Balance: FLOK
+                          Your Balance: {tokenSymbol}
                         </Label.Detail>
                       </Label>
-                      <Image src="/FlokelonInu.png" className="tokenLogo" />
+                      <Image src="/tokenAvatar.png" className="tokenLogo" />
                       <Header textAlign="center" className="headerFont">
                         <Header.Content
                           style={{ fontSize: this.state.fontSize }}
@@ -327,7 +331,7 @@ class Index extends Component {
                     <div>
                       <Label attached="top" className="labelFont">
                         <Label.Detail style={{ fontSize: this.state.fontSize }}>
-                          Pending Rewards: FLOKI
+                          Pending Rewards: {rewardSymbol}
                         </Label.Detail>
                       </Label>
                       <Header
@@ -336,7 +340,7 @@ class Index extends Component {
                         style={{ padding: "10px 0 15px" }}
                       >
                         <Image
-                          src="/flokilogo.png"
+                          src="/rewardAvatar.png"
                           className="smallRewardTokenLogo"
                         />
                         <Header.Content className="smallInfoBoxValue">
@@ -383,7 +387,7 @@ class Index extends Component {
                     <div>
                       <Label attached="top" className="labelFont">
                         <Label.Detail style={{ fontSize: this.state.fontSize }}>
-                          Total Earned: FLOKI
+                          Total Earned: {rewardSymbol}
                         </Label.Detail>
                       </Label>
                       <Header
@@ -392,7 +396,7 @@ class Index extends Component {
                         style={{ padding: "10px 0 0" }}
                       >
                         <Image
-                          src="/flokilogo.png"
+                          src="/rewardAvatar.png"
                           className="smallRewardTokenLogo"
                         />
                         <Header.Content className="smallInfoBoxValue">
@@ -430,11 +434,11 @@ class Index extends Component {
                   <div>
                     <Label attached="top" className="labelFont">
                       <Label.Detail style={{ fontSize: this.state.fontSize }}>
-                        Total FLOKI Paid To FLOK Holders
+                        Total {rewardSymbol} Paid To {tokenSymbol} Holders
                       </Label.Detail>
                     </Label>
 
-                    <Image src="/flokilogo.png" className="totalLogo" />
+                    <Image src="/rewardAvatar.png" className="totalLogo" />
 
                     <Header textAlign="center" className="headerFont">
                       <Header.Content style={{ fontSize: this.state.fontSize }}>

@@ -75,7 +75,7 @@ class MenuComponent extends Component {
         <Menu.Item
           fitted="vertically" /* style={{ display: this.state.hideLogo }} */
         >
-          <Image src="/Logowhite.png" size="small" />
+          <Image src="/MenuLogo.png" size="small" />
         </Menu.Item>
 
         <Menu.Menu position="right">
